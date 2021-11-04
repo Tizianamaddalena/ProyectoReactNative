@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
 
 class Register extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             email : '',
             userName: '',
@@ -11,8 +11,8 @@ class Register extends Component{
         }
     }
 
-    enviar(){
-        console.log(`El email que se coloco es: ${this.state.email} `);
+    send(){
+        this.props.register(this.state.email,this.state.password)
     }
  
     render(){
@@ -42,8 +42,8 @@ class Register extends Component{
                 
                 <TouchableOpacity 
                     style = {styles.boton} 
-                    onPress = {() => this.enviar()}>
-                    <Text style={styles.enviar}>Registrarse</Text>
+                    onPress = {() => this.send()}>
+                    <Text style={styles.send}>Registrarse</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderColor: 'blue'
     },
-    enviar:{
+    send:{
         color: 'white'
     }
 })

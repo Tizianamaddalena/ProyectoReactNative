@@ -12,7 +12,7 @@ class Register extends Component{
     }
 
     send(){
-        this.props.register(this.state.email,this.state.password)
+        this.props.register(this.state.email,this.state.password,this.state.userName)
     }
  
     render(){

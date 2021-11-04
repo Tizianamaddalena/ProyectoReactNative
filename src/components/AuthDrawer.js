@@ -14,7 +14,7 @@ export default class AuthDrawer extends Component{
     }
   }
   register(email, password){
-    auth.createUserWithEmailAndPassword(email, password) //es un metodo de auth
+    auth.createUserWithEmailAndPassword(email, password,userName) //es un metodo de auth
     .then(response => {
       console.log(response);
       this.setState({loggedin: true})
@@ -40,7 +40,7 @@ export default class AuthDrawer extends Component{
       <NavigationContainer>
         <Drawer.Navigator>
           <Drawer.Screen name="Register">
-              {() => <Register register={(email,pass)=> this.register(email,pass)} />}
+              {() => <Register register={(email,pass,userName)=> this.register(email,pass,userName)} />}
           </Drawer.Screen>
           <Drawer.Screen name="Login" >
               {() => <Login login={(email,pass)=> this.login(email, pass)}/>}

@@ -21,8 +21,8 @@ export default class AuthDrawer extends Component{
     auth.createUserWithEmailAndPassword(email, password) //es un metodo de auth
     .then(response => {
       console.log(response);
-      response.user.updateProfile({displayName: userName}); // aca 
-      console.log(auth.currentUser.displayName)
+      response.user.updateProfile({displayName: userName});
+      // console.log(userName) 
       this.setState({loggedin: true})
     })
     .catch(error => { //por si hay un error en la cracion del usuario

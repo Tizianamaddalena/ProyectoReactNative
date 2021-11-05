@@ -17,10 +17,12 @@ export default class AuthDrawer extends Component{
       error: ''
     }
   }
-  register(email, password){
+  register(email, password,userName){
     auth.createUserWithEmailAndPassword(email, password) //es un metodo de auth
     .then(response => {
       console.log(response);
+      response.user.updateProfile({displayName: userName}); // aca 
+      console.log(auth.currentUser.displayName)
       this.setState({loggedin: true})
     })
     .catch(error => { //por si hay un error en la cracion del usuario

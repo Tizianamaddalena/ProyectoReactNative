@@ -15,7 +15,8 @@ export default class AuthDrawer extends Component{
     super(props);
     this.state = {
       loggedin: false, // estado inicial: no estas logueado
-      error: ''
+      error: '',
+      user: ''
     }
   }
   register(email, password,userName){
@@ -24,7 +25,10 @@ export default class AuthDrawer extends Component{
       console.log(response);
       response.user.updateProfile({displayName: userName});
       // console.log(userName) 
-      this.setState({loggedin: true})
+      this.setState({
+        loggedin: true,
+        user: response.user.email
+      })
     })
     .catch(error => { //por si hay un error en la cracion del usuario
       console.log(error);
@@ -39,7 +43,10 @@ export default class AuthDrawer extends Component{
     auth.signInWithEmailAndPassword(email, password)
     .then(response => {
       console.log(response);
-      this.setState({loggedin: true})
+      this.setState({
+        loggedin: true,
+        user:response.user.email
+      })
     })
     .catch(error => {
       console.log(error);
@@ -47,6 +54,19 @@ export default class AuthDrawer extends Component{
           loggedin: false,
           error:"Error al iniciar sesión"
         })
+    })
+  }
+
+  signOut(){
+    auth.signOut()
+    .then(response => {
+      this.setState({
+        loggedin: false,
+        user: '',
+      })
+    })
+    .catch(error => {
+
     })
   }
 
@@ -62,7 +82,7 @@ export default class AuthDrawer extends Component{
                         {() => <Home />}  
                     </Drawer.Screen>
                     <Drawer.Screen name='Perfil'>
-                        {() => <Profile />}  
+                        {() => <Profile user={this.state.user} signOut={() => this.signOut()}/>}  
                     </Drawer.Screen>
                 </React.Fragment>
                 :

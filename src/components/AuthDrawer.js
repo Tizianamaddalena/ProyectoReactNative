@@ -7,6 +7,7 @@ import Register from '../screens/Register';
 import Login from '../screens/Login';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
+import CreatePost from '../screens/CreatePost';
 
 const Drawer = createDrawerNavigator();
 
@@ -37,12 +38,13 @@ export default class AuthDrawer extends Component{
     }) 
   }
 
-  register(email, password,userName){
+  register(email, password, userName){
     auth.createUserWithEmailAndPassword(email, password) //es un metodo de auth
     .then(response => {
-      console.log(response);
-      response.user.updateProfile({displayName: userName});
-      // console.log(userName) 
+      response.user.updateProfile({
+        displayName: userName
+      })    
+     
       this.setState({
         loggedin: true,
         user: response.user.email,
@@ -103,6 +105,9 @@ export default class AuthDrawer extends Component{
                     </Drawer.Screen>
                     <Drawer.Screen name='Perfil'>
                         {() => <Profile user={this.state.user} signOut={() => this.signOut()}/>}  
+                    </Drawer.Screen>
+                    <Drawer.Screen name='Crear Posteo'>
+                        {() => <CreatePost />}  
                     </Drawer.Screen>
                 </React.Fragment>
                 :

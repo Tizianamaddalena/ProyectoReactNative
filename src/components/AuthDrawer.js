@@ -89,15 +89,15 @@ export default class AuthDrawer extends Component{
     })
     .catch(error => {
 
-    })
+    }) 
   }
 
   render(){
     return(
       <NavigationContainer>
-        <Drawer.Navigator>
+        <Drawer.Navigator> 
            {  
-               this.state.loggedin // if ternario que te muestra el home unicamente si estas logueado
+               this.state.loggedin // if ternario que te muestra el home unicamente si estas logueado y el drawer post vienen del drawer navigator
                ? 
                <React.Fragment>
                     <Drawer.Screen name='Home'>
@@ -106,9 +106,9 @@ export default class AuthDrawer extends Component{
                     <Drawer.Screen name='Perfil'>
                         {() => <Profile user={this.state.user} signOut={() => this.signOut()}/>}  
                     </Drawer.Screen>
-                    <Drawer.Screen name='Crear Posteo'>
-                        {() => <CreatePost />}  
-                    </Drawer.Screen>
+                    <Drawer.Screen name='Crear Posteo'> 
+                    {(drawerProps) => <CreatePost drawerProps={drawerProps} /> } 
+                    </Drawer.Screen> 
                 </React.Fragment>
                 :
                 <React.Fragment>

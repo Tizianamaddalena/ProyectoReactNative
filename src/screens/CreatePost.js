@@ -23,7 +23,7 @@ export default class CreatePost extends Component {
                 title:"",
                 description:""
             });
-            
+            this.props.drawerProps.navigation.navigate("Home"); // va a navegar a la screen que yo quiero 
         })
         .catch(error => {
             console.log(error)
@@ -40,7 +40,7 @@ export default class CreatePost extends Component {
                 <TextInput 
                 multiline = {true}
                 numberOfLines = {4}
-                onChangeText={text => this.setState({title:text})} 
+                onChangeText={text => this.setState({description:text})} 
                 />
                 
                 <TouchableOpacity

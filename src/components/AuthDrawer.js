@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Register from '../screens/Register';
 import Login from '../screens/Login';
 import Home from '../screens/Home';
+import Profile from '../screens/Profile';
 
 const Drawer = createDrawerNavigator();
 
@@ -54,13 +55,13 @@ export default class AuthDrawer extends Component{
       <NavigationContainer>
         <Drawer.Navigator>
            {  
-               this.state.loggedin 
+               this.state.loggedin // if ternario que te muestra el home unicamente si estas logueado
                ? 
                <React.Fragment>
                     <Drawer.Screen name='Home'>
                         {() => <Home />}  
                     </Drawer.Screen>
-                    <Drawer.Screen name='Profile'>
+                    <Drawer.Screen name='Perfil'>
                         {() => <Profile />}  
                     </Drawer.Screen>
                 </React.Fragment>

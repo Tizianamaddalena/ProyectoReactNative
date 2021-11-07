@@ -19,6 +19,7 @@ class Login extends Component{
     render(){
         return(
             <View>
+                <Text>{this.props.error}</Text>
                 <Text>E-mail</Text>
                 <TextInput 
                     onChangeText={text => this.setState({email:text})}

@@ -27,7 +27,8 @@ export default class AuthDrawer extends Component{
       // console.log(userName) 
       this.setState({
         loggedin: true,
-        user: response.user.email
+        user: response.user.email,
+        error: ''
       })
     })
     .catch(error => { //por si hay un error en la cracion del usuario
@@ -45,7 +46,8 @@ export default class AuthDrawer extends Component{
       console.log(response);
       this.setState({
         loggedin: true,
-        user:response.user.email
+        user:response.user.email,
+        error: ''
       })
     })
     .catch(error => {
@@ -88,10 +90,10 @@ export default class AuthDrawer extends Component{
                 :
                 <React.Fragment>
                     <Drawer.Screen name="Login" >
-                        {() => <Login login={(email,pass)=> this.login(email, pass)}/>}
+                        {() => <Login login={(email,pass)=> this.login(email, pass)} error={this.state.error}/>}
                     </Drawer.Screen>
                     <Drawer.Screen name="Register">
-                        {() => <Register register={(email,pass,userName)=> this.register(email,pass,userName)} />}
+                        {() => <Register register={(email,pass,userName)=> this.register(email,pass,userName)} error={this.state.error} />}
                     </Drawer.Screen>
                 </React.Fragment>
 

@@ -18,6 +18,7 @@ class Register extends Component{
     render(){
         return(
             <View style= {styles.container}>
+                <Text>{this.props.error}</Text>
                 
                 <Text style={styles.titulo}>Nombre de usuario</Text>
                 <TextInput

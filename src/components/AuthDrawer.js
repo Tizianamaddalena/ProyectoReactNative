@@ -19,6 +19,24 @@ export default class AuthDrawer extends Component{
       user: ''
     }
   }
+
+  componentDidMount(){
+    auth.onAuthStateChanged((user) => { // recibe un callback (funcion como parametro)
+      if(user) {
+        this.setState({
+          loggedin: true,
+          user: user.email,
+        })
+      
+      }else{
+        this.setState({
+          loggedin: false, 
+        })
+
+      }
+    }) 
+  }
+
   register(email, password,userName){
     auth.createUserWithEmailAndPassword(email, password) //es un metodo de auth
     .then(response => {

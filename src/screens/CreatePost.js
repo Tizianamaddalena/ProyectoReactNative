@@ -20,6 +20,7 @@ export default class CreatePost extends Component {
             title: this.state.title,
             description: this.state.description,
             createdAt: Date.now(),
+            likes: [],
             username: auth.currentUser.displayName, // con el displayName acceso al nombre de mi usuario
             photo: this.state.photo,
 

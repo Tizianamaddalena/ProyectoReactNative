@@ -1,15 +1,39 @@
-import React from "react";
+import React, { Component } from "react";
 import {View, Text, StyleSheet, Image} from 'react-native';
+import { auth, db } from "../firebase/config";
+import firebase from "firebase";
 
-export default function Posts(props){
+export default class Posts extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            likes: 0,
+            liked: false
+        }
+    }
+
+    componentDidMount(){
+        if(this.props.info.data.likes){
+            let likes = this.props.info.data.likes.length;
+            this.setState({
+                likes: likes // igualo mi variable al array de likes que cree como estado
+            })
+        }
+
+    }
+
+    render(){
+
     return(
         <View style={styles.container}>
-            <Text>{props.info.data.username}</Text>
-            <Image source={{uri: props.info.data.photo}} style={styles.imagen} /> 
-            <Text>{props.info.data.title}</Text>
-            <Text>{props.info.data.description}</Text>
+            <Text>{this.props.info.data.username}</Text>
+            <Image source={{uri: this.props.info.data.photo}} style={styles.imagen} /> 
+            <Text>{this.props.info.data.title}</Text>
+            <Text>{this.props.info.data.description}</Text>
         </View>
-    )
+ 
+ 
+ )}
 }
 
 const styles = StyleSheet.create({

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, Image, FlatList,ActivityIndicator} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ActivityIndicator} from 'react-native';
 // import Contador  from '../components/Contador';
+import { db } from '../firebase/config';
+import Posts from '../components/Posts';
 
-let familia = [
+/*let familia = [
     {
         id : 1,
         nombre: 'Gloria'
@@ -19,21 +21,42 @@ let familia = [
         id : 4,
         nombre: 'Luis'
     }
-]
+] */
 
 class Home extends Component{
     constructor(){
         super();
         this.state ={
-
+            posts: [],
+            loadingHome: true
         }
     }
-    saludar(){
-        return alert('me clickearon');
+
+    componentDidMount(){
+        db.collection("posts").orderBy("createdAt", "desc").onSnapshot((docs) => {
+            let posts = [];
+            docs.forEach((doc) => {
+                posts.push({
+                    id: doc.id,
+                    data: doc.data()
+                });
+            })
+            this.setState({
+                posts: posts, //igualo mi variable de estado al array que yo cree de posts creados
+                loadingHome: false
+            })
+
+        })
+
     }
+
+   /* saludar(){
+        return alert('me clickearon');
+    } */
+
     render(){
         return(
-            <View>
+            /*
                 <ActivityIndicator  size= 'large' color= 'teal'/>
                 <Text style={styles.titulo} >Hola Mundo!!!</Text>
                 <Image   style= {styles.imagen} 
@@ -42,13 +65,25 @@ class Home extends Component{
                 />
                 <TouchableOpacity onPress = {() => this.saludar()}>
                     <Text>Clickeame</Text>
-                </TouchableOpacity>
-                {/* <Contador /> */}
-                <FlatList 
-                    data = {familia }
-                    keyExtractor = { familia => familia.id.toString()}
-                    renderItem = { ({item}) => <Text>{ item.nombre}</Text>}
+                </TouchableOpacity> 
+                {/* <Contador />} */
+
+            <View>
+                {
+                    this.state.loadingHome ?
+                    // si es true
+                    <ActivityIndicator color={'lightblue'} size={'large'} /> // revisar si podemos agregar un condicional para cuando no hay peliculas 
+
+                    :
+                    // si es false
+                    <FlatList 
+                    data = {this.state.posts}
+                    keyExtractor = { (item) => item.id.toString()}
+                    renderItem = { ({item}) => <Posts info={item}/>} // recibe una funcion, info es una propiedad
                 />
+
+                }
+
 
             </View>
         )

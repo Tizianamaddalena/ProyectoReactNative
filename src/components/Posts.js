@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import {View, Text, StyleSheet, Image, TouchableOpacity,Modal} from 'react-native';
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
-import Home from "../screens/Home";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faCoffee, faHeart, faHeartbeat } from '@fortawesome/free-solid-svg-icons'
 
 
 export default class Posts extends Component{
@@ -88,11 +89,11 @@ export default class Posts extends Component{
             <View>
                 {this.state.liked === true ?
                 <TouchableOpacity onPress={()=>this.unlike()}>
-                    <Text>Ya no me gusta</Text> <i class="fas fa-heart"></i>
+                  <FontAwesomeIcon icon={ faHeart} style={ styles.icon } />
                 </TouchableOpacity>
                 :
                 <TouchableOpacity onPress={()=>this.like()}>
-                    <Text>Me gusta</Text>
+                <FontAwesomeIcon icon={ faHeart} style={ styles.iconnegro }/>  
                 </TouchableOpacity>
                 }
                 <Text>Likes: {this.state.likes}</Text>
@@ -133,5 +134,11 @@ const styles = StyleSheet.create({
     imagen: {
         width: 200,
         height: 200
+    },
+    icon:{
+        color: 'red'
+    },
+    iconnegro: {
+        color: 'black'
     }
 })

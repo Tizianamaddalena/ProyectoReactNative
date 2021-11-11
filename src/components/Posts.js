@@ -38,7 +38,7 @@ export default class Posts extends Component{
         .then (
             this.setState({
                 liked: true,
-                likes: this.state.like + 1
+                likes: this.state.likes + 1
             },
             console.log('likeado ok'))
              )   
@@ -54,7 +54,7 @@ export default class Posts extends Component{
         .then (
             this.setState({
                 liked: false,
-                likes: this.state.like -1 
+                likes: this.state.likes -1 
             },
             console.log('deslikeado ok'))
              )   

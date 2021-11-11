@@ -23,6 +23,7 @@ export default class CreatePost extends Component {
             likes: [],
             comentarios: [], 
             username: auth.currentUser.displayName, // con el displayName acceso al nombre de mi usuario
+            email: auth.currentUser.email, // sirve como identiicador unico
             photo: this.state.photo,
 
 

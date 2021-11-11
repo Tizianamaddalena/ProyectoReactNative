@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
+import Home from "../screens/Home";
 
 export default class Posts extends Component{
     constructor(props){
@@ -30,7 +31,7 @@ export default class Posts extends Component{
 
     // Metodo para likear post 
     like(){
-        let corazon = db.collection('posts').doc(this.props.doc.id); // este es el id del post 
+        let corazon = db.collection('posts').doc(this.props.info.data.id); // este es el id del post 
         corazon.update(  // actualizo la referencia 
             {likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)} // al array que teniamos previamente, le suammos ese mail. 
         )
@@ -46,7 +47,7 @@ export default class Posts extends Component{
 
     // Metodo pata unlike post 
     unlike(){
-        let corazon = db.collection('posts').doc(this.props.doc.id); // este es el id del post 
+        let corazon = db.collection('posts').doc(this.props.info.data.id); // este es el id del post 
         corazon.update(  // actualizo la referencia 
             {likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)} // al array que teniamos previamente, le removemos ese mail. 
         )

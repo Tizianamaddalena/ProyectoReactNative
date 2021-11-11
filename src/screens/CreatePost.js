@@ -19,8 +19,9 @@ export default class CreatePost extends Component {
         db.collection("posts").add({
             title: this.state.title,
             description: this.state.description,
-            createdAt: Date.now(),
+            createdAt: new Date(),
             likes: [],
+            comentarios: [], 
             username: auth.currentUser.displayName, // con el displayName acceso al nombre de mi usuario
             photo: this.state.photo,
 

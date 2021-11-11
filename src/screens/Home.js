@@ -23,6 +23,7 @@ class Home extends Component{
                     data: doc.data()
                 });
             })
+            console.log('posts',posts)
             this.setState({
                 posts: posts, //igualo mi variable de estado al array que yo cree de posts creados
                 loadingHome: false

@@ -5,16 +5,12 @@ import { auth } from '../firebase/config';
 export default function Profile(props){
     return(
         <View style={styles.container}>
-            <Text>Usuario</Text>
-            <Text>{auth.currentUser.displayName}</Text>
-
-            <Text>Email</Text>
-            <Text>{props.user}</Text>
-
-
+            <Text>Usuario: {auth.currentUser.displayName}</Text>
+            <Text>Email: {props.user}</Text>
+            
             <TouchableOpacity onPress={()=> props.signOut()} //como signOut es una funcion no se pone this
             >
-                <Text> Cerrar Sesión </Text>
+                <Text>Cerrar Sesión </Text>
             </TouchableOpacity>
 
 

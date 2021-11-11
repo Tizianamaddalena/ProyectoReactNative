@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
 
@@ -35,7 +35,7 @@ export default class Posts extends Component{
             {likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)} // al array que teniamos previamente, le suammos ese mail. 
         )
         .then (
-            rhis.setState({
+            this.setState({
                 liked: true,
                 likes: this.state.like + 1
             },
@@ -51,7 +51,7 @@ export default class Posts extends Component{
             {likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)} // al array que teniamos previamente, le removemos ese mail. 
         )
         .then (
-            rhis.setState({
+            this.setState({
                 liked: false,
                 likes: this.state.like -1 
             },
@@ -66,10 +66,22 @@ export default class Posts extends Component{
 
     return(
         <View style={styles.container}>
-            <Text>{this.props.info.data.username}</Text>
+            <Text>@{this.props.info.data.username}</Text>
             <Image source={{uri: this.props.info.data.photo}} style={styles.imagen} /> 
             <Text>{this.props.info.data.title}</Text>
             <Text>{this.props.info.data.description}</Text>
+            <View>
+                {this.state.liked === true ?
+                <TouchableOpacity onPress={()=>this.unlike()}>
+                    <Text>Ya no me gusta</Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity onPress={()=>this.like()}>
+                    <Text>Me gusta</Text>
+                </TouchableOpacity>
+                }
+                <Text>Likes: {this.state.likes}</Text>
+            </View>
         </View>
  
  

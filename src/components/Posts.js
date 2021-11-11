@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity,Modal} from 'react-native';
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
 import Home from "../screens/Home";
@@ -10,7 +10,8 @@ export default class Posts extends Component{
         super(props);
         this.state = {
             likes: 0,  // cantidad de likes, 
-            liked: false // si yo lo likee o no
+            liked: false, // si yo lo likee o no
+            showModal: false
         }
     }
 
@@ -62,7 +63,19 @@ export default class Posts extends Component{
             .catch (e => console.log(e))
             }
     
+    // Para el modal de los comentarios
+    openModal(){
+        this.setState({
+            showModal: true
+        })
+    }
 
+      // Para el modal de los comentarios
+      closeModal(){
+        this.setState({
+            showModal: false
+        })
+    }
 
     render(){
 
@@ -84,6 +97,29 @@ export default class Posts extends Component{
                 }
                 <Text>Likes: {this.state.likes}</Text>
             </View>
+
+            
+            
+            {
+              this.state.showModal  ?
+                <Modal
+                animationType="tra"
+                visible={this.state.showModal} 
+                >
+                <TouchableOpacity onPress={()=>this.closeModal() }>
+                <Text>Ocultar comentarios</Text>
+                </TouchableOpacity>
+
+                <Text>prueba</Text> 
+                {/* aca va el flatlist */}
+                </Modal>
+            :
+                <TouchableOpacity onPress={()=>this.openModal() }>
+                <Text>Ver comentarios</Text>
+                </TouchableOpacity>
+            }
+            
+
         </View>
  
  

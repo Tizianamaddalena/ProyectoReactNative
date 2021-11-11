@@ -8,7 +8,8 @@ export default function Profile(props){
             <Text>Usuario: {auth.currentUser.displayName}</Text>
             <Text>Email: {props.user}</Text>
             
-            <TouchableOpacity onPress={()=> props.signOut()}> //como signOut es una funcion no se pone this
+            <TouchableOpacity onPress={()=> props.signOut()}> 
+            {/* //como signOut es una funcion no se pone this */}
                 <Text>Cerrar Sesión </Text>
             </TouchableOpacity>
 

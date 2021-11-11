@@ -7,8 +7,8 @@ export default class Posts extends Component{
     constructor(props){
         super(props);
         this.state = {
-            likes: 0,
-            liked: false
+            likes: 0,  // cantidad de likes
+            liked: false // si yo lo likee o no
         }
     }
 
@@ -29,6 +29,20 @@ export default class Posts extends Component{
     }
 
     // Metodo para likear post 
+    like(){
+        let corazon = db.collection('posts').doc(this.props.doc.id); // este es el id del post 
+        corazon.update(  // actualizo la referencia 
+            {likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)}
+        )
+        .then (
+            rhis.setState({
+                liked: true,
+                likes: this.state.like + 1
+            },
+            console.log('likeado ok'))
+             )   
+            .catch (e => console.log(e))
+            }
 
     // Metodo pata unlike post 
 

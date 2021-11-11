@@ -7,7 +7,7 @@ export default class Posts extends Component{
     constructor(props){
         super(props);
         this.state = {
-            likes: 0,  // cantidad de likes
+            likes: 0,  // cantidad de likes, 
             liked: false // si yo lo likee o no
         }
     }
@@ -32,7 +32,7 @@ export default class Posts extends Component{
     like(){
         let corazon = db.collection('posts').doc(this.props.doc.id); // este es el id del post 
         corazon.update(  // actualizo la referencia 
-            {likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)}
+            {likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)} // al array que teniamos previamente, le suammos ese mail. 
         )
         .then (
             rhis.setState({
@@ -45,6 +45,22 @@ export default class Posts extends Component{
             }
 
     // Metodo pata unlike post 
+    unlike(){
+        let corazon = db.collection('posts').doc(this.props.doc.id); // este es el id del post 
+        corazon.update(  // actualizo la referencia 
+            {likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)} // al array que teniamos previamente, le removemos ese mail. 
+        )
+        .then (
+            rhis.setState({
+                liked: false,
+                likes: this.state.like -1 
+            },
+            console.log('deslikeado ok'))
+             )   
+            .catch (e => console.log(e))
+            }
+    
+
 
     render(){
 

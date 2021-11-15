@@ -34,7 +34,7 @@ export default class Profile extends Component{
     render(){
         return(
             <View style={styles.container}>
-                    <FontAwesomeIcon icon={ faUser} size={70} margin={20}/> 
+                    <FontAwesomeIcon icon={ faUser} size={70} style={styles.icon}/> 
                     <Text style={styles.text}>Usuario: {auth.currentUser.displayName}</Text>
                     <Text style={styles.text}>Email: {this.props.user}</Text>
                     <Text style={styles.text}>Última conexión: </Text>
@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
        alignItems: 'center',
        
     },
+    icon: {
+       marginBottom: 10,
+    },
     text:{
         fontSize: 16,
         fontFamily: 'Avenir',
@@ -61,13 +64,14 @@ const styles = StyleSheet.create({
     },
 
     logout:{
-        margin: 20,
+        margin: 30,
         fontFamily: 'Avenir',
         fontSize: 16,
         backgroundColor: 'pink',
         borderRadius: 5,
         padding: 5,
-        borderStyle: 'solid'
+        borderStyle: 'solid',
+        fontWeight: 'bold'
     }
 
 })

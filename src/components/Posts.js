@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, StyleSheet, Image, TouchableOpacity,Modal} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity,Modal, TextInput, FlatList} from 'react-native';
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -81,7 +81,20 @@ export default class Posts extends Component{
 
     // Para comentar
     comentar(){
-
+        let comentario = db.collection('posts').doc(this.props.info.id); // este es el id del post 
+        comentario.update(  // actualizo la referencia 
+            {comentarios: firebase.firestore.FieldValue.arrayUnion({
+                comentario: this.state.comentarios,
+                autor: auth.currentUser.email,
+            })}  
+        )
+        .then (
+            this.setState({
+                comentarios: ''
+            },
+            console.log('comentado'))
+        )   
+            .catch (e => console.log(e))
     }
 
     render(){
@@ -126,13 +139,26 @@ export default class Posts extends Component{
                 />
                 
                 <TouchableOpacity
-                    // onPress = {() => this.comentar()}
+                     onPress = {() => this.comentar()}
                 >
                     <Text>Comentar</Text>
                 </TouchableOpacity>
                 
             </View>
-                {/* aca va el flatlist */}
+                {/* {this.state.comentarios ?  */}
+
+                <View style={styles.flatlist}>
+                <FlatList >
+                    data = { this.props.info.data.comentarios}
+                    keyExtractor = { (item,id) => id.toString()}
+                    renderItem = { ({item}) => <Text>{item.autor} {item.comentario}</Text> }
+                </FlatList>
+                </View>
+                
+                {/* : */}
+                {/* <Text> Aún no hay comentarios. Sé el primero en opinar</Text> */}
+                {/* } */}
+                
                 </Modal>
             :
                 <TouchableOpacity onPress={()=>this.openModal() }>
@@ -160,5 +186,9 @@ const styles = StyleSheet.create({
     },
     iconnegro: {
         color: 'black'
+    },
+    flatlist:{
+        width:'100%',
+        flex:1 
     }
 })

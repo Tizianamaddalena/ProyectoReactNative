@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { auth, db } from '../firebase/config';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faUser} from '@fortawesome/free-solid-svg-icons'
 
 export default class Profile extends Component{
     constructor(props){
@@ -32,12 +34,14 @@ export default class Profile extends Component{
     render(){
         return(
             <View style={styles.container}>
-                    <Text>Usuario: {auth.currentUser.displayName}</Text>
-                    <Text>Email: {this.props.user}</Text>
+                    <FontAwesomeIcon icon={ faUser} size={70} margin={20}/> 
+                    <Text style={styles.text}>Usuario: {auth.currentUser.displayName}</Text>
+                    <Text style={styles.text}>Email: {this.props.user}</Text>
+                    <Text style={styles.text}>Última conexión: </Text>
                     
                     <TouchableOpacity onPress={()=> this.props.signOut()}> 
                     {/* //como signOut es una funcion no se pone this */}
-                        <Text>Cerrar Sesión </Text>
+                        <Text style={styles.logout}>Cerrar Sesión </Text>
                     </TouchableOpacity>
         
             </View>
@@ -45,5 +49,25 @@ export default class Profile extends Component{
 }
 
 const styles = StyleSheet.create({
+    container: {
+       padding: 15,
+       alignItems: 'center',
+       
+    },
+    text:{
+        fontSize: 16,
+        fontFamily: 'Avenir',
+        padding: 5,
+    },
+
+    logout:{
+        margin: 20,
+        fontFamily: 'Avenir',
+        fontSize: 16,
+        backgroundColor: 'pink',
+        borderRadius: 5,
+        padding: 5,
+        borderStyle: 'solid'
+    }
 
 })

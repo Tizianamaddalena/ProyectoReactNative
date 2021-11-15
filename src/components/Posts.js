@@ -12,7 +12,8 @@ export default class Posts extends Component{
         this.state = {
             likes: 0,  // cantidad de likes, 
             liked: false, // si yo lo likee o no
-            showModal: false
+            showModal: false,
+            comentarios: '',
         }
     }
 
@@ -78,6 +79,11 @@ export default class Posts extends Component{
         })
     }
 
+    // Para comentar
+    comentar(){
+
+    }
+
     render(){
 
     return(
@@ -104,14 +110,28 @@ export default class Posts extends Component{
             {
               this.state.showModal  ?
                 <Modal
-                animationType="tra"
+                animationType="slide"
                 visible={this.state.showModal} 
                 >
                 <TouchableOpacity onPress={()=>this.closeModal() }>
                 <Text>Ocultar comentarios</Text>
                 </TouchableOpacity>
 
-                <Text>prueba</Text> 
+                {/* <Text>prueba</Text>  */}
+            <View>
+                <TextInput 
+                multiline = {true}
+                numberOfLines = {5}
+                onChangeText={text => this.setState({comentarios:text})} 
+                />
+                
+                <TouchableOpacity
+                    // onPress = {() => this.comentar()}
+                >
+                    <Text>Comentar</Text>
+                </TouchableOpacity>
+                
+            </View>
                 {/* aca va el flatlist */}
                 </Modal>
             :

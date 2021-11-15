@@ -19,6 +19,7 @@ export default class Posts extends Component{
 
    //like y unlike 
     componentDidMount(){
+        // console.log(this.props.info.data)
         if(this.props.info.data.likes){
             let likes = this.props.info.data.likes.length;
             this.setState({
@@ -145,19 +146,21 @@ export default class Posts extends Component{
                 </TouchableOpacity>
                 
             </View>
-                {/* {this.state.comentarios ?  */}
+               
+                {this.props.info.data.comentarios.length > 0  ? 
 
                 <View style={styles.flatlist}>
-                <FlatList >
+                
+                <FlatList 
                     data = { this.props.info.data.comentarios}
                     keyExtractor = { (item,id) => id.toString()}
-                    renderItem = { ({item}) => <Text>{item.autor} {item.comentario}</Text> }
-                </FlatList>
+                    renderItem = { ({item}) => <Text>{item.autor} - {item.comentario}</Text> }
+                />
                 </View>
-                
-                {/* : */}
-                {/* <Text> Aún no hay comentarios. Sé el primero en opinar</Text> */}
-                {/* } */}
+
+                 :
+                <Text> Aún no hay comentarios. Sé el primero en opinar</Text> 
+                 }
                 
                 </Modal>
             :

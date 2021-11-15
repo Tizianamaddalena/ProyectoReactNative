@@ -53,36 +53,39 @@ class Register extends Component{
 const styles = StyleSheet.create({
     container: {
         height: 250,
-        marginTop: 20
+        marginTop: 150,
     },
     titulo:{
-        fontFamily: 'arial',
+        fontFamily: 'Avenir',
         textAlign: 'center',
-        color: 'tomato',
-        fontSize: '2rem'
+        color: 'black',
+        fontSize: 16,
+        fontWeight: "bold"
     },
     input: {
         height: 20,
         paddingVertical: 15,
-        paddingHorizontal: 10,
         borderWidth: 1,
+        borderRadius: 5,
+        padding: 5,
         borderStyle: 'solid',
         borderColor: '#ccc',
-        borderRadius: 6,
-        marginVertical:10
+        margin: 20,
     },
     boton: {
-        backgroundColor: 'green',
-        paddingHorizontal: 10,
-        paddingVertical: 6,
-        textAlign: 'center',
-        borderRadius: 4,
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: 'blue'
+        margin: 20,
+        fontFamily: 'Avenir',
+        fontSize: 16,
+        backgroundColor: 'pink',
+        borderRadius: 5,
+        padding: 5,
+        borderStyle: 'solid'
     },
     send:{
-        color: 'white'
+        color: 'black',
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        fontWeight: "bold"
     }
 })
 

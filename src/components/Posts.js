@@ -38,13 +38,13 @@ export default class Posts extends Component{
         corazon.update(  // actualizo la referencia 
             {likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)} // al array que teniamos previamente, le suammos ese mail. 
         )
-        .then (()=> {
+        .then (
             this.setState({
                 liked: true,
                 likes: this.state.likes + 1
             },
             console.log('likeado ok'))
-        })   
+        )   
             .catch (e => console.log(e))
             }
 
@@ -54,13 +54,13 @@ export default class Posts extends Component{
         corazon.update(  // actualizo la referencia 
             {likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)} // al array que teniamos previamente, le removemos ese mail. 
         )
-        .then (()=> {
+        .then (
             this.setState({
-                liked: true,
+                liked: false,
                 likes: this.state.likes - 1
             },
             console.log('deslikeado ok'))
-        })   
+        )   
             .catch (e => console.log(e))
             }
     

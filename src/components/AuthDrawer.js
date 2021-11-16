@@ -113,10 +113,10 @@ export default class AuthDrawer extends Component{
                 </React.Fragment>
                 :
                 <React.Fragment>
-                    <Drawer.Screen name="Inicio de sesión" >
+                    <Drawer.Screen name="Login" >
                         {() => <Login login={(email,pass)=> this.login(email, pass)} error={this.state.error}/>}
                     </Drawer.Screen>
-                    <Drawer.Screen name="Registrarse">
+                    <Drawer.Screen name="Register">
                         {() => <Register register={(email,pass,userName)=> this.register(email,pass,userName)} error={this.state.error} />}
                     </Drawer.Screen>
                 </React.Fragment>

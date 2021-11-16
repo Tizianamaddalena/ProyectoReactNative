@@ -63,7 +63,7 @@ export default class MyCamera extends Component{
 
     render(){
 
-        if(this.state.permission === false) return <Text>No hay permisos</Text>
+        if(this.state.permission === false) return <Text style={styles.permiso} > ⚠️ No hay permisos ⚠️ </Text>
 
         return(
             <React.Fragment>
@@ -72,11 +72,11 @@ export default class MyCamera extends Component{
                     <React.Fragment> 
                         <Image source={{uri: this.state.photo}} style={styles.preview}/>
                         <View style={styles.btnContainer}> 
-                            <TouchableOpacity onPress={()=> this.onAcept()}>
-                                <Text>Aceptar</Text>
+                            <TouchableOpacity   style = {styles.boton}  onPress={()=> this.onAcept()}>
+                                <Text style={styles.titulo}>Aceptar ✅</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={()=> this.onRejetct()}>
-                                <Text>Rechazar</Text>
+                            <TouchableOpacity   style = {styles.boton}  onPress={()=> this.onRejetct()}>
+                                <Text style={styles.titulo}>Rechazar ❌</Text>
                             </TouchableOpacity>
                         </View>
                     </React.Fragment> 
@@ -89,8 +89,8 @@ export default class MyCamera extends Component{
                             type={Camera.Constants.Type.front}
                             ref={reference => this.camera = reference}
                         />
-                        <TouchableOpacity   onPress ={()=> this.takePhoto()} >
-                          <Text>Sacar foto</Text>
+                        <TouchableOpacity  style = {styles.boton}   onPress ={()=> this.takePhoto()} >
+                          <Text style={styles.titulo} > Sacar foto 📸 </Text>
                         </TouchableOpacity>  
                     </React.Fragment> 
                 }
@@ -111,5 +111,32 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         flex: 1
-    }
+    },
+    boton: {
+        margin: 7,
+        backgroundColor: 'pink',
+        borderRadius: 30,
+        padding: 2,
+        borderStyle: 'solid',
+        textAlign: 'center',
+
+    },
+    titulo:{
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        color: 'black',
+        fontSize: 15,
+        // fontWeight: "bold"
+    },
+    permiso: {
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        color: 'black',
+        fontSize: 20,
+        fontWeight: "bold",
+        marginTop: 100,
+    },
+
 })
+
+

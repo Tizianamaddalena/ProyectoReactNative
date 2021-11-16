@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Stylesheet, View, Text, TouchableOpacity, TextInput} from "react-native";
+import {StyleSheet, View, Text, TouchableOpacity, TextInput} from "react-native";
 import { db, auth } from "../firebase/config";
 import MyCamera from "../components/MyCamera";
 
@@ -57,20 +57,22 @@ export default class CreatePost extends Component {
                 :
 
             <View>
-                <Text> Titulo </Text>
-                <TextInput onChangeText={text => this.setState({title:text})} />
+                <Text style={styles.titulo}> Titulo </Text>
+                <TextInput  style = {styles.input} onChangeText={text => this.setState({title:text})} />
 
-                <Text> Descripción </Text>
+                <Text style={styles.titulo} > Descripción </Text>
                 <TextInput 
+                style = {styles.input}
                 multiline = {true}
                 numberOfLines = {4}
                 onChangeText={text => this.setState({description:text})} 
                 />
                 
                 <TouchableOpacity
+                    style = {styles.boton} 
                     onPress = {() => this.createPost()}
                 >
-                    <Text>Crear Posteo</Text>
+                    <Text style={styles.send}>Crear Posteo</Text>
                 </TouchableOpacity>
                 
             </View>
@@ -80,3 +82,38 @@ export default class CreatePost extends Component {
     
     }}
 
+    const styles = StyleSheet.create({
+    titulo:{
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        color: 'black',
+        fontSize: 15,
+    },
+    input: {
+        height: 20,
+        paddingVertical: 15,
+        borderWidth: 1,
+        borderRadius: 30,
+        padding: 5,
+        borderStyle: 'solid',
+        borderColor: '#ccc',
+        margin: 15,
+        fontFamily: 'Avenir',
+        marginTop: 24,
+    },
+    boton: {
+        margin: 15,
+        fontFamily: 'Avenir',
+        fontSize: 15,
+        backgroundColor: 'pink',
+        borderRadius: 30,
+        padding: 5,
+        borderStyle: 'solid'
+    },
+    send:{
+        color: 'black',
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        fontWeight: "bold"
+    },
+})

@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
     },
     boton: {
         margin: 15,
-        fontFamily: 'Avenir',
-        fontSize: 15,
+        fontFamily: 'Avenir', // al pedo creo xq esta el de .titulo
+        fontSize: 15, // al pedo creo xq esta el de .titulo
         backgroundColor: 'pink',
         borderRadius: 30,
         padding: 5,

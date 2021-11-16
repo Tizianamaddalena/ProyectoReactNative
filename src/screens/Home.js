@@ -58,15 +58,11 @@ class Home extends Component{
 
 }
 const styles = StyleSheet.create({
-    titulo : {
-        fontFamily : 'Arial',
-        textAlign: 'center',
-        color: 'white',
-        backgroundColor : 'teal',
-        fontSize : '2.5rem',
-        padding: 4 
-    },
-    imagen:  {height: 400 }
+
+    imagen:  {
+        height: 400,
+        alignContent: 'center'
+     }
 })
 
 export default Home;

@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image, TouchableOpacity,Modal, TextInput, FlatLi
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faCoffee, faHeart, faHeartbeat } from '@fortawesome/free-solid-svg-icons'
+import {faHeart} from '@fortawesome/free-solid-svg-icons'
 
 
 export default class Posts extends Component{
@@ -102,12 +102,13 @@ export default class Posts extends Component{
 
     return(
         <View style={styles.container}>
-            <Text>@{this.props.info.data.username}</Text>
+            <Text style={styles.usuario}>@{this.props.info.data.username}</Text>
             <Image source={{uri: this.props.info.data.photo}} style={styles.imagen} /> 
-            <Text>{this.props.info.data.title}</Text>
-            <Text>{this.props.info.data.description}</Text>
+            <Text style={styles.title}  >{this.props.info.data.title}</Text>
+            <Text style={styles.titulo} >{this.props.info.data.description}</Text>
             <View>
                 {this.state.liked === true ?
+                
                 <TouchableOpacity onPress={()=>this.unlike()}>
                   <FontAwesomeIcon icon={ faHeart} style={ styles.icon } />
                 </TouchableOpacity>
@@ -116,7 +117,8 @@ export default class Posts extends Component{
                 <FontAwesomeIcon icon={ faHeart} style={ styles.iconnegro }/>  
                 </TouchableOpacity>
                 }
-                <Text>Likes: {this.state.likes}</Text>
+
+                <Text style={styles.titulo} >Likes: {this.state.likes}</Text>
             </View>
 
             
@@ -128,7 +130,7 @@ export default class Posts extends Component{
                 visible={this.state.showModal} 
                 >
                 <TouchableOpacity onPress={()=>this.closeModal() }>
-                <Text>Ocultar comentarios</Text>
+                <Text style={styles.titulo} >Ocultar comentarios</Text>
                 </TouchableOpacity>
 
                 {/* <Text>prueba</Text>  */}
@@ -142,7 +144,7 @@ export default class Posts extends Component{
                 <TouchableOpacity
                      onPress = {() => this.comentar()}
                 >
-                    <Text>Comentar</Text>
+                    <Text style={styles.titulo} >Comentar</Text>
                 </TouchableOpacity>
                 
             </View>
@@ -159,13 +161,13 @@ export default class Posts extends Component{
                 </View>
 
                  :
-                <Text> Aún no hay comentarios. Sé el primero en opinar</Text> 
+                <Text style={styles.title} > Aún no hay comentarios. Sé el primero en opinar</Text> 
                  }
                 
                 </Modal>
             :
                 <TouchableOpacity onPress={()=>this.openModal() }>
-                <Text>Ver comentarios</Text>
+                <Text style={styles.titulo} >Ver comentarios</Text>
                 </TouchableOpacity>
             }
             
@@ -178,7 +180,8 @@ export default class Posts extends Component{
 
 const styles = StyleSheet.create({
     container:{
-        marginBottom: 5
+        marginBottom: 5,
+        backgroundColor: 'white'
     },
     imagen: {
         width: 200,
@@ -193,5 +196,22 @@ const styles = StyleSheet.create({
     flatlist:{
         width:'100%',
         flex:1 
-    }
+    },
+    usuario: {
+        fontFamily: 'Avenir',
+        color: 'black',
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+    titulo:{
+        fontFamily: 'Avenir',
+        color: 'black',
+        fontSize: 15,
+    },
+    title:{
+        fontFamily: 'Avenir',
+        color: 'black',
+        fontSize: 15,
+        fontStyle: 'italic',
+    },
 })

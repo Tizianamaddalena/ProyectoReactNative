@@ -9,6 +9,7 @@ import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import CreatePost from '../screens/CreatePost';
 
+
 const Drawer = createDrawerNavigator();
 
 export default class AuthDrawer extends Component{
@@ -55,7 +56,7 @@ export default class AuthDrawer extends Component{
       console.log(error);
       this.setState({
           loggedin: false,
-          error:"Error al registrarse"
+          error:"⚠️ Error al registrarse ⚠️"
         })
     })
   }
@@ -74,7 +75,7 @@ export default class AuthDrawer extends Component{
       console.log(error);
       this.setState({
           loggedin: false,
-          error:"Error al iniciar sesión"
+          error:"⚠️ Error al iniciar sesión ⚠️"
         })
     })
   }
@@ -112,10 +113,10 @@ export default class AuthDrawer extends Component{
                 </React.Fragment>
                 :
                 <React.Fragment>
-                    <Drawer.Screen name="Login" >
+                    <Drawer.Screen name="Inicio de sesión" >
                         {() => <Login login={(email,pass)=> this.login(email, pass)} error={this.state.error}/>}
                     </Drawer.Screen>
-                    <Drawer.Screen name="Register">
+                    <Drawer.Screen name="Registrarse">
                         {() => <Register register={(email,pass,userName)=> this.register(email,pass,userName)} error={this.state.error} />}
                     </Drawer.Screen>
                 </React.Fragment>
@@ -130,3 +131,5 @@ export default class AuthDrawer extends Component{
     )
   }
 }
+
+

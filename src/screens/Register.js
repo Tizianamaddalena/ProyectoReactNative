@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
 
 class Register extends Component{
     constructor(props){
@@ -18,7 +18,12 @@ class Register extends Component{
     render(){
         return(
             <View style= {styles.container}>
-                <Text>{this.props.error}</Text>
+                
+                <Image style={styles.logo}
+                    source= {require('../../assets/logo.png')}
+                />
+                
+                <Text style={styles.cuenta}>Creá una cuenta</Text>
                 
                 <Text style={styles.titulo}>Nombre de usuario</Text>
                 <TextInput
@@ -46,6 +51,8 @@ class Register extends Component{
                     onPress = {() => this.send()}>
                     <Text style={styles.send}>Registrarse</Text>
                 </TouchableOpacity>
+
+                <Text style = {styles.error} >{this.props.error} </Text> 
             </View>
         )
     }
@@ -53,31 +60,32 @@ class Register extends Component{
 const styles = StyleSheet.create({
     container: {
         height: 250,
-        marginTop: 150,
+        marginTop: 15,
     },
     titulo:{
         fontFamily: 'Avenir',
         textAlign: 'center',
         color: 'black',
-        fontSize: 16,
-        fontWeight: "bold"
+        fontSize: 15,
+        // fontWeight: "bold"
     },
     input: {
         height: 20,
         paddingVertical: 15,
         borderWidth: 1,
-        borderRadius: 5,
+        borderRadius: 30,
         padding: 5,
         borderStyle: 'solid',
         borderColor: '#ccc',
-        margin: 20,
+        margin: 15,
+        fontFamily: 'Avenir',
     },
     boton: {
-        margin: 20,
+        margin: 15,
         fontFamily: 'Avenir',
-        fontSize: 16,
+        fontSize: 15,
         backgroundColor: 'pink',
-        borderRadius: 5,
+        borderRadius: 30,
         padding: 5,
         borderStyle: 'solid'
     },
@@ -86,7 +94,28 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
         textAlign: 'center',
         fontWeight: "bold"
-    }
+    },
+    logo: {
+        height: 200,
+        margin:5,
+    },
+    error: {
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        fontWeight: "bold", 
+        fontSize: 15,
+
+    },
+    cuenta:{
+        fontFamily: 'Avenir',
+        textAlign: 'center',
+        fontWeight: "bold", 
+        fontSize: 20,
+        padding: 5,
+        marginBottom: 15,
+        marginTop: 10,
+        backgroundColor: 'pink'
+    },
 })
 
 export default Register;

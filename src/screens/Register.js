@@ -48,7 +48,9 @@ class Register extends Component{
                 
                 <TouchableOpacity 
                     style = {styles.boton} 
-                    onPress = {() => this.send()}>
+                    onPress = {() => this.send()}
+                    disabled={this.state.email === '' ? true : false || this.state.userName === '' ? true : false || this.state.password === '' ? true : false} 
+                    >
                     <Text style={styles.send}>Registrarse</Text>
                 </TouchableOpacity>
 
@@ -59,8 +61,10 @@ class Register extends Component{
 }
 const styles = StyleSheet.create({
     container: {
-        height: 250,
-        marginTop: 15,
+        flex: 1,
+        paddingTop: 15,
+        width: '100%',
+        backgroundColor: 'white',
     },
     titulo:{
         fontFamily: 'Avenir',

@@ -144,6 +144,7 @@ export default class Posts extends Component{
                 
                 <TouchableOpacity
                      onPress = {() => this.comentar()}
+                     disabled={this.state.comentarios === '' ? true : false } 
                 >
                     <Text style={styles.titulo} >Comentar</Text>
                 </TouchableOpacity>

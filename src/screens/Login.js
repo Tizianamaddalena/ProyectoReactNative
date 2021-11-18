@@ -34,7 +34,9 @@ class Login extends Component{
                     secureTextEntry={true}
                 />
                 <TouchableOpacity style = {styles.boton} 
-                    onPress = {() => this.send()}>
+                    onPress = {() => this.send()}
+                    disabled={this.state.email === '' ? true : false || this.state.password === '' ? true : false} 
+                    >
                     <Text style = {styles.send} >Ingresar</Text>
                 </TouchableOpacity>
 

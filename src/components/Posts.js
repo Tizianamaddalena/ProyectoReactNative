@@ -120,7 +120,14 @@ export default class Posts extends Component{
 
                 <Text style={styles.titulo} >Likes: {this.state.likes}</Text>
             </View>
-
+            
+            { this.props.info.data.email === auth.currentUser.email ?
+             <TouchableOpacity onPress= {()=> this.props.borrar(this.props.info.id)}>
+                 <Text> Borrar</Text>
+             </TouchableOpacity>
+             :
+             null
+            }
             
             
             {
@@ -129,8 +136,9 @@ export default class Posts extends Component{
                 animationType="slide"
                 visible={this.state.showModal} 
                 >
-                <TouchableOpacity onPress={()=>this.closeModal() }>
-                <Text style={styles.hide} >Ocultar comentarios</Text>
+                <TouchableOpacity  style={styles.boton}
+                 onPress={()=>this.closeModal() }>
+                <Text style={styles.titulo}>Ocultar comentarios</Text>
                 </TouchableOpacity>
 
                 {/* <Text>prueba</Text>  */}
@@ -142,7 +150,7 @@ export default class Posts extends Component{
                 onChangeText={text => this.setState({comentarios:text})} 
                 />
                 
-                <TouchableOpacity
+                <TouchableOpacity  style={styles.boton}
                      onPress = {() => this.comentar()}
                      disabled={this.state.comentarios === '' ? true : false } 
                 >
@@ -155,7 +163,7 @@ export default class Posts extends Component{
 
                 <View style={styles.flatlist}>
                 
-                <FlatList 
+                <FlatList
                     data = { this.props.info.data.comentarios}
                     keyExtractor = { (item,id) => id.toString()}
                     renderItem = { ({item}) => <Text style={styles.comentario}>{item.autor} - {item.comentario}</Text> }
@@ -169,10 +177,11 @@ export default class Posts extends Component{
                 </Modal>
             :
                 <TouchableOpacity onPress={()=>this.openModal() }>
-                <Text style={styles.titulo} >Ver comentarios</Text>
+                <Text style={styles.titulo} >Ver comentarios ({this.props.info.data.comentarios.length})</Text>
                 </TouchableOpacity>
             }
             
+
 
         </View>
  
@@ -223,5 +232,14 @@ const styles = StyleSheet.create({
     },
     comentario:{
         padding: 10,
-    }
+    },
+    boton: {
+        margin: 7,
+        backgroundColor: 'pink',
+        borderRadius: 30,
+        padding: 2,
+        borderStyle: 'solid',
+        textAlign: 'center',
+
+    },
 })

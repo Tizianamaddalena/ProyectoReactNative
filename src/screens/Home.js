@@ -61,7 +61,11 @@ const styles = StyleSheet.create({
 
     imagen:  {
         height: 400,
-        alignContent: 'center'
+        alignContent: 'center',
+        flex: 1,
+        paddingTop: 15,
+        width: '100%',
+        backgroundColor: 'white',
      }
 })
 

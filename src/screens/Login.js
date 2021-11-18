@@ -18,7 +18,7 @@ class Login extends Component{
 
     render(){
         return(
-            <View>
+            <View style={styles.container} >
                 
                 <Image style={styles.logo}
                     source= {require('../../assets/logo.png')}
@@ -46,6 +46,12 @@ class Login extends Component{
     }}
 
     const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            paddingTop: 15,
+            width: '100%',
+            backgroundColor: 'white',
+        },
         titulo:{
             fontFamily: 'Avenir',
             textAlign: 'center',

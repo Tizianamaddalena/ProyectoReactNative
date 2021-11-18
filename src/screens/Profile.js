@@ -58,7 +58,7 @@ export default class Profile extends Component{
                     <FlatList 
                     data = {this.state.posts}
                     keyExtractor = { (item) => item.id.toString()}
-                    renderItem = { ({item}) => <Posts info={item} borrar={(id)=> this.borrar(id)} />} 
+                    renderItem = { ({item}) => <ProfilePosts info={item} borrar={(id)=> this.borrar(id)} />} 
                     
                     />
 

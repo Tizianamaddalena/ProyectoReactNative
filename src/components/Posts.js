@@ -130,12 +130,13 @@ export default class Posts extends Component{
                 visible={this.state.showModal} 
                 >
                 <TouchableOpacity onPress={()=>this.closeModal() }>
-                <Text style={styles.titulo} >Ocultar comentarios</Text>
+                <Text style={styles.hide} >Ocultar comentarios</Text>
                 </TouchableOpacity>
 
                 {/* <Text>prueba</Text>  */}
             <View>
-                <TextInput 
+                <TextInput
+                style={styles.comentar} 
                 multiline = {true}
                 numberOfLines = {5}
                 onChangeText={text => this.setState({comentarios:text})} 
@@ -156,7 +157,7 @@ export default class Posts extends Component{
                 <FlatList 
                     data = { this.props.info.data.comentarios}
                     keyExtractor = { (item,id) => id.toString()}
-                    renderItem = { ({item}) => <Text>{item.autor} - {item.comentario}</Text> }
+                    renderItem = { ({item}) => <Text style={styles.comentario}>{item.autor} - {item.comentario}</Text> }
                 />
                 </View>
 
@@ -181,7 +182,8 @@ export default class Posts extends Component{
 const styles = StyleSheet.create({
     container:{
         marginBottom: 5,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        padding: 10,
     },
     imagen: {
         width: 200,
@@ -214,4 +216,11 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontStyle: 'italic',
     },
+    comentar:{
+        border:'solid 1px',
+        margin: 10,
+    },
+    comentario:{
+        padding: 10,
+    }
 })

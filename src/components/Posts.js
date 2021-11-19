@@ -120,14 +120,7 @@ export default class Posts extends Component{
 
                 <Text style={styles.titulo} >Likes: {this.state.likes}</Text>
             </View>
-            
-            { this.props.info.data.email === auth.currentUser.email ?
-             <TouchableOpacity onPress= {()=> this.props.borrar(this.props.info.id)}>
-                 <Text> Borrar</Text>
-             </TouchableOpacity>
-             :
-             null
-            }
+        
             
             
             {

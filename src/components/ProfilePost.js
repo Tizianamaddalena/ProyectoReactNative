@@ -120,14 +120,7 @@ export default class ProfilePosts extends Component{
 
                 <Text style={styles.titulo} >Likes: {this.state.likes}</Text>
             </View>
-            
-            { this.props.info.data.email === auth.currentUser.email ?
-             <TouchableOpacity onPress= {()=> this.props.borrar(this.props.info.id)}>
-                 <Text> Borrar</Text>
-             </TouchableOpacity>
-             :
-             null
-            }
+        
             
             
             {
@@ -181,7 +174,13 @@ export default class ProfilePosts extends Component{
                 </TouchableOpacity>
             }
             
-
+            { this.props.info.data.email === auth.currentUser.email ?
+             <TouchableOpacity onPress= {()=> this.props.borrar(this.props.info.id)} style={styles.borrado}>
+                 <Text style={styles.titulo}> Borrar</Text>
+             </TouchableOpacity>
+             :
+             null
+            }
 
         </View>
  
@@ -236,6 +235,15 @@ const styles = StyleSheet.create({
     boton: {
         margin: 7,
         backgroundColor: 'pink',
+        borderRadius: 30,
+        padding: 2,
+        borderStyle: 'solid',
+        textAlign: 'center',
+
+    },
+    borrado: {
+        margin: 7,
+        backgroundColor: 'red',
         borderRadius: 30,
         padding: 2,
         borderStyle: 'solid',

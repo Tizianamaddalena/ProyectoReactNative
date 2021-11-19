@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native
 import { auth, db } from '../firebase/config';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faUser} from '@fortawesome/free-solid-svg-icons'
-import Posts from '../components/Posts';
+import ProfilePosts from '../components/ProfilePost'
 
 export default class Profile extends Component{
     constructor(props){
@@ -99,10 +99,11 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
         fontSize: 16,
         backgroundColor: 'pink',
-        borderRadius: 5,
-        padding: 5,
+        borderRadius: 30,
+        padding: 4,
         borderStyle: 'solid',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
-
+    
 })

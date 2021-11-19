@@ -112,7 +112,7 @@ export default class AuthDrawer extends Component{
                     {(drawerProps) => <CreatePost drawerProps={drawerProps} /> } 
                     </Drawer.Screen> 
                     <Drawer.Screen name='Buscador de posteos'> 
-                    {() => <Search  /> } 
+                    {() => <Search />}  
                     </Drawer.Screen> 
                 </React.Fragment>
                 :

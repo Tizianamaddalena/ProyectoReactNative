@@ -8,9 +8,11 @@ class Search extends Component{
         super(props);
         this.state = {
             posts: [],
-            loadingPosts: true
+            loadingPosts: true,
+            usuarioBuscado: ""
         }
     }
+
 
     search(text){
         db.collection("posts")

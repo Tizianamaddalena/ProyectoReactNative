@@ -12,7 +12,7 @@ class Search extends Component{
         }
     }
 
-    search(){
+    search(text){
         db.collection("posts")
         .where('username', '==', text)
         .orderBy("createdAt", "desc")
@@ -36,13 +36,13 @@ class Search extends Component{
         return(
             <View style= {styles.container}>
                <Text> Escriba un nombre de usuario: </Text>
-               <TextInput onChange = {(text) => this.search(text)}> </TextInput>
+               <TextInput onChangeText = {(text) => this.search(text)}/> 
 
                <FlatList
                data = {this.state.posts}
                keyExtractor = { (item) => item.id.toString()}
                renderItem = { ({item}) => <Posts info={item}/>}
-               ></FlatList>
+               />
 
             </View>
         )
@@ -50,6 +50,10 @@ class Search extends Component{
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex: 1,
+        width: '100%',
+    }
 
 })
 

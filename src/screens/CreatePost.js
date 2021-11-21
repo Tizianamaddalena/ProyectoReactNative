@@ -56,7 +56,7 @@ export default class CreatePost extends Component {
                 />
                 :
 
-            <View>
+            <View style={styles.container}>
                 <Text style={styles.titulo}> Titulo </Text>
                 <TextInput  style = {styles.input} onChangeText={text => this.setState({title:text})} />
 
@@ -88,6 +88,11 @@ export default class CreatePost extends Component {
         textAlign: 'center',
         color: 'black',
         fontSize: 15,
+    },
+    container:{
+        backgroundColor:'white',
+        width:'100%',
+        flex: 1,
     },
     input: {
         height: 20,

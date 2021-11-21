@@ -42,18 +42,14 @@ export default class Profile extends Component{
     render(){
         return(
             <View style={styles.container}>
-                    <FontAwesomeIcon icon={ faUser} size={70} style={styles.icon}/> 
-                    <Text style={styles.text}>Usuario </Text> <Text style={styles.dato}>{auth.currentUser.displayName}</Text>
+                    <FontAwesomeIcon icon={ faUser} size={100} style={styles.icon}/> 
+                    <Text style={styles.text}>Usuario</Text> <Text style={styles.dato}>{auth.currentUser.displayName}</Text>
                     <Text style={styles.text}>Email</Text>  <Text style={styles.dato}>{this.props.user}</Text>
                     <Text style={styles.text}>Última conexión</Text> <Text style={styles.dato}> {auth.currentUser.metadata.lastSignInTime} </Text>
                     <Text style={styles.text}>Cuenta creada el</Text> <Text style={styles.dato}> {auth.currentUser.metadata.creationTime} </Text>
 
-                    <TouchableOpacity onPress={()=> this.props.signOut()}> 
-                    {/* //como signOut es una funcion no se pone this */}
-                        <Text style={styles.logout}>Cerrar Sesión </Text>
-                    </TouchableOpacity>
-
-                    <Text style={styles.text}>Mis Posteos ({this.state.posts.length}):</Text>
+                
+                    <Text style={styles.misPosteos}>Mis Posteos ({this.state.posts.length}):</Text>
 
                     <FlatList 
                     data = {this.state.posts}
@@ -61,6 +57,11 @@ export default class Profile extends Component{
                     renderItem = { ({item}) => <ProfilePosts info={item} borrar={(id)=> this.borrar(id)} />} 
                     
                     />
+
+                    <TouchableOpacity onPress={()=> this.props.signOut()}> 
+                    {/* //como signOut es una funcion no se pone this */}
+                        <Text style={styles.logout}>Cerrar Sesión </Text>
+                    </TouchableOpacity>
 
 {/* postProfile */}
         
@@ -85,8 +86,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: 'Avenir',
         fontWeight: 'bold',
-        padding: 2,
-        marginTop: 6,
+        // padding: 2,
+        marginTop: 15,
     },
     dato:{
         fontSize: 16,
@@ -104,6 +105,14 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         fontWeight: 'bold',
         textAlign: 'center',
+    },
+    misPosteos:{
+        marginTop: 30,
+        fontSize: 16,
+        fontFamily: 'Avenir',
+        fontWeight: 'bold',
+        padding: 2,
+        marginBottom: 10,
     }
     
 })

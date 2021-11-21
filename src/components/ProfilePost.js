@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 15,
         fontStyle: 'italic',
+        textAlign: "center",
     },
     comentar:{
         border:'solid 1px',

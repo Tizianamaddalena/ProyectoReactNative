@@ -37,8 +37,8 @@ class Search extends Component{
     render(){
         return(
             <View style= {styles.container}>
-               <Text> Escriba un nombre de usuario: </Text>
-               <TextInput onChangeText = {(text) => this.search(text)}/> 
+               <Text style={styles.text}> Escriba un nombre de usuario: </Text>
+               <TextInput style={styles.buscar} onChangeText = {(text) => this.search(text)}/> 
 
                <FlatList
                data = {this.state.posts}
@@ -55,7 +55,24 @@ const styles = StyleSheet.create({
     container:{
         flex: 1,
         width: '100%',
-    }
+        backgroundColor: 'white',
+        alignItems: "center",
+    },
+    buscar:{
+        border:'solid 1px',
+        margin: 10,
+        padding: 5,
+        fontFamily: 'Avenir',
+        color: 'black',
+        fontSize: 15,
+    },
+    text:{
+        fontFamily: 'Avenir',
+        color: 'black',
+        fontSize: 15,
+        marginLeft: 5,
+        marginTop: 10,
+    },
 
 })
 

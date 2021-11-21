@@ -35,11 +35,11 @@ class Home extends Component{
     render(){
         return(
 
-            <View>
+            <View style={styles.container}>
                 {
                     this.state.loadingHome ?
                     // si es true
-                    <ActivityIndicator color={'pink'} size={'large'} /> // revisar si podemos agregar un condicional para cuando no hay peliculas 
+                    <ActivityIndicator color={'pink'} size={'large'} /> // revisar si podemos agregar un condicional para cuando no hay posteos 
 
                     :
                     // si es false
@@ -58,7 +58,6 @@ class Home extends Component{
 
 }
 const styles = StyleSheet.create({
-
     imagen:  {
         height: 400,
         alignContent: 'center',
@@ -66,6 +65,13 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         width: '100%',
         backgroundColor: 'white',
+     },
+     container: {
+        paddingTop: 15,
+        width: '100%',
+        backgroundColor: 'white',
+        marginBottom: 0,
+        alignItems: 'center',
      }
 })
 

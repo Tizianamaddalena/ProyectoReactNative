@@ -53,7 +53,7 @@ export default class Profile extends Component{
                         <Text style={styles.logout}>Cerrar Sesión </Text>
                     </TouchableOpacity>
 
-                    <Text style={styles.text}>Mis Posteos:</Text>
+                    <Text style={styles.text}>Mis Posteos ({this.state.posts.length}):</Text>
 
                     <FlatList 
                     data = {this.state.posts}

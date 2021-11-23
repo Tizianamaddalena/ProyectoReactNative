@@ -61,18 +61,18 @@ class Login extends Component{
             marginTop: 10,
         },
         logo: {
-            height: 225,
-            margin:5,
+            height: 226,
+            margin:6,
         },
         input: {
             height: 20,
             paddingVertical: 15,
             borderWidth: 1,
-            //borderRadius: 30,
+            borderRadius: 30,
             padding: 5,
             borderStyle:'solid',
             borderColor: 'black',
-            margin: 5,
+            margin: 15,
             fontFamily: 'Avenir',
         },
         boton: {

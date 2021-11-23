@@ -84,7 +84,10 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
         color: 'black',
         fontSize: 15,
-        borderColor: 'black'
+        borderColor: 'black',
+        borderRadius: 30,
+        height: 30,
+       
     },
     text:{
         fontFamily: 'Avenir',

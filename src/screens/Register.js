@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
         // fontWeight: "bold"
     },
     input: {
-        height: 20,
-        paddingVertical: 15,
-        borderWidth: 1,
-        //borderRadius: 30,
-        padding: 5,
-        borderStyle: 'solid',
-        borderColor: 'black',
-        margin: 5,
-        fontFamily: 'Avenir',
+            height: 20,
+            paddingVertical: 15,
+            borderWidth: 1,
+            borderRadius: 30,
+            padding: 5,
+            borderStyle:'solid',
+            borderColor: 'black',
+            margin: 8,
+            fontFamily: 'Avenir',
     },
     boton: {
         margin: 15,
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     logo: {
-        height: 200,
-        margin:5,
+        height: 226,
+        margin:6,
     },
     error: {
         fontFamily: 'Avenir',

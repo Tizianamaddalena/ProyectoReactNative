@@ -35,7 +35,7 @@ export default class Profile extends Component{
     borrar(id){
         let posteo = db.collection('posts').doc(id); // este es el id del post 
         posteo.delete()
-        let filterPost = posteo.filter(post => post.id != id) 
+        let filterPost = this.state.posts.filter(post => post.id != id) 
         this.setState({
             posts: filterPost
         })
@@ -47,7 +47,7 @@ export default class Profile extends Component{
     render(){
         return(
             <View style={styles.container}>
-                    <FontAwesomeIcon icon={ faUser} size={100} style={styles.icon}/> 
+                    <FontAwesomeIcon icon={ faUser} size={50} style={styles.icon}/> 
                     <Text style={styles.text}>Usuario</Text> <Text style={styles.dato}>{auth.currentUser.displayName}</Text>
                     <Text style={styles.text}>Email</Text>  <Text style={styles.dato}>{this.props.user}</Text>
                     <Text style={styles.text1}>Última conexión</Text> <Text style={styles.dato1}> {auth.currentUser.metadata.lastSignInTime} </Text>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     },
 
     text1:{
-        fontSize: 11,
+        fontSize: 12,
         fontFamily: 'Avenir',
         fontWeight: 'bold',
         // padding: 2,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
 
     dato1:{
-        fontSize: 11,
+        fontSize: 12,
         fontFamily: 'Avenir',
         padding: 2,
     },

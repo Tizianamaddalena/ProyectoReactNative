@@ -29,23 +29,34 @@ class Search extends Component{
             posts: posts,
             loading: false
             })
-        })
+        })  
 
     }
+
+    
+
 
     render(){
         return(
             <View style= {styles.container}>
+            
+
 
                <Text style={styles.text}> Escriba un nombre de usuario: </Text>
-               <TextInput style={styles.buscar} onChangeText = {(text) => this.search(text)}/> 
 
+
+               <TextInput style={styles.buscar} onChangeText = {(text) => this.search(text)}/> 
+               
+        
                <FlatList
                data = {this.state.posts}
                keyExtractor = { (item) => item.id.toString()}
                renderItem = { ({item}) => <Posts info={item}/>}
                />
 
+                
+
+            
             </View>
         )
     }

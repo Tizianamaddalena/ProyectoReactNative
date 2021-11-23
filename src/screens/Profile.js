@@ -45,8 +45,8 @@ export default class Profile extends Component{
                     <FontAwesomeIcon icon={ faUser} size={100} style={styles.icon}/> 
                     <Text style={styles.text}>Usuario</Text> <Text style={styles.dato}>{auth.currentUser.displayName}</Text>
                     <Text style={styles.text}>Email</Text>  <Text style={styles.dato}>{this.props.user}</Text>
-                    <Text style={styles.text}>Última conexión</Text> <Text style={styles.dato}> {auth.currentUser.metadata.lastSignInTime} </Text>
-                    <Text style={styles.text}>Cuenta creada el</Text> <Text style={styles.dato}> {auth.currentUser.metadata.creationTime} </Text>
+                    <Text style={styles.text1}>Última conexión</Text> <Text style={styles.dato1}> {auth.currentUser.metadata.lastSignInTime} </Text>
+                    <Text style={styles.text1}>Cuenta creada el</Text> <Text style={styles.dato1}> {auth.currentUser.metadata.creationTime} </Text>
 
                 
                     <Text style={styles.misPosteos}>Mis Posteos ({this.state.posts.length}):</Text>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
        
     },
     icon: {
-       marginBottom: 10,
+       marginBottom: 0,
     },
     text:{
         fontSize: 16,
@@ -89,8 +89,23 @@ const styles = StyleSheet.create({
         // padding: 2,
         marginTop: 15,
     },
+
+    text1:{
+        fontSize: 11,
+        fontFamily: 'Avenir',
+        fontWeight: 'bold',
+        // padding: 2,
+        marginTop: 15,
+    },
+
     dato:{
         fontSize: 16,
+        fontFamily: 'Avenir',
+        padding: 2,
+    },
+
+    dato1:{
+        fontSize: 11,
         fontFamily: 'Avenir',
         padding: 2,
     },

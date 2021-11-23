@@ -67,12 +67,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
      },
      container: {
-        paddingTop: 15,
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: '#F8F9F5',
         marginBottom: 0,
         alignItems: 'center',
         flex: 1,
+        marginLeft: 0
      }
 })
 

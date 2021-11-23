@@ -186,7 +186,10 @@ const styles = StyleSheet.create({
     container:{
         marginBottom: 5,
         backgroundColor: 'white',
-        padding: 10,
+        paddingLeft: 93,
+        paddingRight: 93,
+        paddingTop: 15,
+        paddingBottom: 15,
     },
     imagen: {
         width: 200,

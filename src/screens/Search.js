@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
         color: 'black',
         fontSize: 15,
+        borderColor: 'black'
     },
     text:{
         fontFamily: 'Avenir',
@@ -95,8 +96,8 @@ const styles = StyleSheet.create({
 
     textTitulo:{
         fontFamily: 'Avenir',
-        color: 'black',
-        fontSize: 17,
+        color: '#4335B2',
+        fontSize: 15,
         fontWeight: "bold",
         marginLeft: 5,
         marginTop: 10,

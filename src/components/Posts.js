@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     },
     usuario: {
         fontFamily: 'Avenir',
-        color: 'black',
+        color: '#4335B2',
         fontSize: 15,
         fontWeight: 'bold'
     },

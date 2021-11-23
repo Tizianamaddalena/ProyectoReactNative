@@ -62,7 +62,7 @@ export default class CreatePost extends Component {
 
                 <Text style={styles.titulo} > Descripción </Text>
                 <TextInput 
-                style = {styles.input}
+                style = {styles.inputDescripcion}
                 multiline = {true}
                 numberOfLines = {4}
                 onChangeText={text => this.setState({description:text})} 
@@ -84,9 +84,11 @@ export default class CreatePost extends Component {
 
     const styles = StyleSheet.create({
     titulo:{
+        marginTop: 15,
         fontFamily: 'Avenir',
         textAlign: 'center',
-        color: 'black',
+        fontWeight: "bold",
+        color: '#4335B2',
         fontSize: 15,
     },
     container:{
@@ -98,14 +100,26 @@ export default class CreatePost extends Component {
         height: 20,
         paddingVertical: 15,
         borderWidth: 1,
-        borderRadius: 30,
         padding: 5,
         borderStyle: 'solid',
-        borderColor: '#ccc',
+        borderColor: 'black',
         margin: 15,
         fontFamily: 'Avenir',
-        marginTop: 24,
+        marginTop: 5,
     },
+
+    inputDescripcion: {
+        height: 70,
+        paddingVertical: 15,
+        borderWidth: 1,
+        padding: 5,
+        borderStyle: 'solid',
+        borderColor: 'black',
+        margin: 15,
+        fontFamily: 'Avenir',
+        marginTop: 5,
+    },
+
     boton: {
         margin: 15,
         fontFamily: 'Avenir',

@@ -55,8 +55,10 @@ class Login extends Component{
         titulo:{
             fontFamily: 'Avenir',
             textAlign: 'center',
+            fontWeight: "bold",
             color: 'black',
             fontSize: 15,
+            marginTop: 10,
         },
         logo: {
             height: 225,
@@ -66,11 +68,11 @@ class Login extends Component{
             height: 20,
             paddingVertical: 15,
             borderWidth: 1,
-            borderRadius: 30,
+            //borderRadius: 30,
             padding: 5,
             borderStyle:'solid',
-            borderColor: '#ccc',
-            margin: 15,
+            borderColor: 'black',
+            margin: 5,
             fontFamily: 'Avenir',
         },
         boton: {
@@ -94,7 +96,7 @@ class Login extends Component{
             fontWeight: "bold", 
             fontSize: 20,
             padding: 5,
-            marginBottom: 15,
+            marginBottom: 10,
             marginTop: 10,
             backgroundColor: 'pink'
         },

@@ -69,19 +69,21 @@ const styles = StyleSheet.create({
     titulo:{
         fontFamily: 'Avenir',
         textAlign: 'center',
+        fontWeight: "bold",
         color: 'black',
         fontSize: 15,
+        marginTop: 10,
         // fontWeight: "bold"
     },
     input: {
         height: 20,
         paddingVertical: 15,
         borderWidth: 1,
-        borderRadius: 30,
+        //borderRadius: 30,
         padding: 5,
         borderStyle: 'solid',
-        borderColor: '#ccc',
-        margin: 15,
+        borderColor: 'black',
+        margin: 5,
         fontFamily: 'Avenir',
     },
     boton: {

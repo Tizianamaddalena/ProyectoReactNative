@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import {View, Text, StyleSheet, Image, TouchableOpacity,Modal, TextInput, FlatList} from 'react-native';
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
+import {View, Text, StyleSheet, Image, TouchableOpacity,Modal, TextInput, FlatList} from 'react-native';
+
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import {faHeart} from '@fortawesome/free-solid-svg-icons'
 

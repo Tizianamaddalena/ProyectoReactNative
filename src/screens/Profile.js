@@ -35,6 +35,7 @@ export default class Profile extends Component{
     borrar(id){
         let posteo = db.collection('posts').doc(id); // este es el id del post 
         posteo.delete()
+        // let borrados = posteo.filter(post => post != id)
         // filtrar posts siempre y cuando el id sea distinto al id que recorro en el filter 
         //y dsps un setState, el filter nos devuelve un array q lo tenemos q guardar, y eso es lo q vamos a posts: filterPost
     }

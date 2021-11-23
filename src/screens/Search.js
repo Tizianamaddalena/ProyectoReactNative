@@ -2,13 +2,15 @@ import React, {Component} from "react";
 import {View, Text, TextInput, TouchableOpacity, StyleSheet, Image, FlatList} from 'react-native';
 import { db } from '../firebase/config';
 import Posts from '../components/Posts';
+import { faBold } from "@fortawesome/free-solid-svg-icons";
 
 class Search extends Component{
     constructor(props){
         super(props);
         this.state = {
             posts: [],
-            loadingPosts: true
+            loadingPosts: true,
+            usuarioBuscado: ''
         }
     }
 
@@ -16,8 +18,7 @@ class Search extends Component{
     search(text){
         db.collection("posts")
         .where('username', '==', text)
-        .orderBy("createdAt", "desc")
-        .onSnapshot((docs) => {
+        .get().then((docs) => { // .get no
             let posts = [];
             docs.forEach (doc => {
                 posts.push({
@@ -27,7 +28,8 @@ class Search extends Component{
             })
         this.setState({
             posts: posts,
-            loading: false
+            loading: false,
+            usuarioBuscado: text
             })
         })  
 
@@ -42,20 +44,26 @@ class Search extends Component{
             
 
 
-               <Text style={styles.text}> Escriba un nombre de usuario: </Text>
+               <Text style={styles.textTitulo}> Buscador de posteos por usuario </Text>
 
 
                <TextInput style={styles.buscar} onChangeText = {(text) => this.search(text)}/> 
-               
-        
-               <FlatList
+
+               { this.state.usuarioBuscado === '' ?
+               <Text style={styles.text}>  Ingrese un nombre de usuario </Text>
+               : 
+                this.state.posts.length > 0 ?
+                <FlatList
                data = {this.state.posts}
                keyExtractor = { (item) => item.id.toString()}
                renderItem = { ({item}) => <Posts info={item}/>}
                />
+               :
+               <Text style={styles.text}> No se encontraron posteos de ese usuario </Text>
 
-                
-
+               }
+               
+            
             
             </View>
         )
@@ -81,6 +89,15 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
         color: 'black',
         fontSize: 15,
+        marginLeft: 5,
+        marginTop: 10,
+    },
+
+    textTitulo:{
+        fontFamily: 'Avenir',
+        color: 'black',
+        fontSize: 17,
+        fontWeight: "bold",
         marginLeft: 5,
         marginTop: 10,
     },

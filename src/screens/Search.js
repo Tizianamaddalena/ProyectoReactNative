@@ -8,8 +8,7 @@ class Search extends Component{
         super(props);
         this.state = {
             posts: [],
-            loadingPosts: true,
-            usuarioBuscado: ""
+            loadingPosts: true
         }
     }
 
@@ -37,6 +36,7 @@ class Search extends Component{
     render(){
         return(
             <View style= {styles.container}>
+
                <Text style={styles.text}> Escriba un nombre de usuario: </Text>
                <TextInput style={styles.buscar} onChangeText = {(text) => this.search(text)}/> 
 

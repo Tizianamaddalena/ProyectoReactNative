@@ -9,7 +9,6 @@ class Search extends Component{
         super(props);
         this.state = {
             posts: [],
-            loadingPosts: true,
             usuarioBuscado: ''
         }
     }
@@ -28,7 +27,6 @@ class Search extends Component{
             })
         this.setState({
             posts: posts,
-            loading: false,
             usuarioBuscado: text
             })
         })  

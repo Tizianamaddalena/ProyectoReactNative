@@ -21,14 +21,15 @@ export default class Posts extends Component{
    //like y unlike 
     componentDidMount(){
         // console.log(this.props.info.data)
-        if(this.props.info.data.likes){
-            let likes = this.props.info.data.likes.length;
+        if(this.props.info.data.likes){ // hago un if que recibe como parametro los likes del posteo
+            let likes = this.props.info.data.likes.length; // .length me da la cant de mails == cant de likes
             this.setState({
                 likes: likes // igualo mi variable al array de likes que cree como estado
+                             // osea seteo la cantidad de likes del length
             })
-            if (this.props.info.data.likes.includes(auth.currentUser.email)){
+            if (this.props.info.data.likes.includes(auth.currentUser.email)){ //si dentro de ese array, esta mi mail
                 this.setState({
-                    liked: true,
+                    liked: true, // entonces setea que yo lo likee
                 })
             }
         }

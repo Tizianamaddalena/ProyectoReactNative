@@ -39,7 +39,7 @@ export default class Posts extends Component{
     // Metodo para likear post 
     like(){
         let corazon = db.collection('posts').doc(this.props.info.id); // este es el id del post 
-        corazon.update(  // actualizo la referencia 
+        corazon.update(  // actualizo un campo del documento 
             {likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)} // al array que teniamos previamente, le suammos ese mail. 
         )
         .then (

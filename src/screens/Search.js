@@ -5,8 +5,8 @@ import Posts from '../components/Posts';
 import { faBold } from "@fortawesome/free-solid-svg-icons";
 
 class Search extends Component{
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             posts: [],
             usuarioBuscado: ''

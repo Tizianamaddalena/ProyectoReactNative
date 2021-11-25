@@ -11,8 +11,8 @@ export default class Posts extends Component{
     constructor(props){
         super(props);
         this.state = {
-            likes: 0,  // cantidad de likes, 
-            liked: false, // si yo lo likee o no
+            likes: 0,   
+            liked: false, 
             showModal: false,
             comentarios: '',
         }

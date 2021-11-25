@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {View, Text, TextInput, TouchableOpacity, StyleSheet, Image, FlatList} from 'react-native';
 import { db } from '../firebase/config';
 import Posts from '../components/Posts';
-import { faBold } from "@fortawesome/free-solid-svg-icons";
 
 class Search extends Component{
     constructor(){

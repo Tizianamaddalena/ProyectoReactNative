@@ -85,7 +85,7 @@ export default class Posts extends Component{
     // Para comentar
     comentar(){
         let comentario = db.collection('posts').doc(this.props.info.id); // este es el id del post 
-        comentario.update(  // actualizo la referencia 
+        comentario.update(  // actualizo  
             {comentarios: firebase.firestore.FieldValue.arrayUnion({
                 comentario: this.state.comentarios,
                 autor: auth.currentUser.email,
@@ -136,7 +136,6 @@ export default class Posts extends Component{
                 <Text style={styles.titulo}>Ocultar comentarios</Text>
                 </TouchableOpacity>
 
-                {/* <Text>prueba</Text>  */}
             <View>
                 <TextInput
                 style={styles.comentar} 

@@ -68,18 +68,18 @@ export default class Posts extends Component{
             .catch (e => console.log(e))
             }
     
-    // Para el modal de los comentarios
-    openModal(){
-        this.setState({
-            showModal: true
-        })
-    }
+    
 
-      // Para el modal de los comentarios
-      closeModal(){
-        this.setState({
-            showModal: false
-        })
+    handleModal(){
+        if(this.state.showModal){
+            this.setState({
+                showModal: false,
+            })} else {
+            this.setState({
+                showModal: true,
+            })
+        }
+
     }
 
     // Para comentar
@@ -132,7 +132,7 @@ export default class Posts extends Component{
                 visible={this.state.showModal} 
                 >
                 <TouchableOpacity  style={styles.boton}
-                 onPress={()=>this.closeModal() }>
+                 onPress={()=>this.handleModal() }>
                 <Text style={styles.titulo}>Ocultar comentarios</Text>
                 </TouchableOpacity>
 
@@ -170,7 +170,7 @@ export default class Posts extends Component{
                 
                 </Modal>
             :
-                <TouchableOpacity onPress={()=>this.openModal() }>
+                <TouchableOpacity onPress={()=>this.handleModal() }>
                 <Text style={styles.titulo} >Ver comentarios ({this.props.info.data.comentarios.length})</Text>
                 </TouchableOpacity>
             }
